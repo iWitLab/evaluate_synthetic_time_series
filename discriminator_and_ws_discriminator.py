@@ -13,6 +13,18 @@ from sklearn.model_selection import train_test_split
 class discriminator_model():
 
     def create_training_data(self, original_training_data, random_data_size):
+        """
+        Create training data for the discriminator model.
+        The data will have real sequences which will be tagged as 1 and will also have random data tagged as 0.
+        The real sequences are taken from the original data while the random data is generated here.
+
+        Parameters
+        ----------
+        original_training_data: pandas.DataFrame
+            sequences from the original data for training
+        random_data_size: int
+            number of random sequences to generate
+        """
 
         self.data_cols = original_training_data.columns
         y_train = np.ones(original_training_data.shape[0])
@@ -47,6 +59,13 @@ class discriminator_model():
             self.X_train[col] = self.X_train[col].apply(lambda x: self.locations.index(x))
 
     def model(self):
+        """
+        Model architecture
+
+        Returns
+        -------
+        model
+        """
 
         inputs = []
         embeddings = []
@@ -75,6 +94,21 @@ class discriminator_model():
         return Model(inputs=inputs, output=output)
 
     def train_model(self, original_training_data, random_data_size, batch_size, epochs, random_state=0):
+        """
+        Generate the training data and than train the model on it.
+
+        Parameters
+        ----------
+        original_training_data: pandas.DataFrame
+            sequences from the original data for training
+        random_data_size: int
+            number of random sequences to generate
+        batch_size: int
+            training batch size
+        epochs: int
+            number of training rounds
+        random_state: int
+        """
 
         self.create_training_data(original_training_data, random_data_size)
         self.discriminator = self.model()

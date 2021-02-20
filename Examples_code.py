@@ -4,6 +4,7 @@ import numpy as np
 from bleu_and_reverse_bleu import bleu
 from likelihood_and_ws_likelihood import MarkovChain, liklihood, ws_likelihood
 from discriminator_and_ws_discriminator import discriminator_model, discrimiator_score, ws_discrimiator_score
+from reidentification_probability import reidentification_prob
 
 orig = pd.DataFrame(
     [
@@ -17,6 +18,9 @@ orig = pd.DataFrame(
     ],
     columns=[f"1_Hour{i}" for i in range(12)]
 ).astype(str)
+orig['User'] = range(len(orig))
+orig = orig.set_index('User')
+
 
 synth = pd.DataFrame(
     [
@@ -52,3 +56,9 @@ d.train_model(orig, random_data_size=5, batch_size=4, epochs=1)
 
 print("Discriminator score", discrimiator_score(d, synth))
 print("WS Discriminator score", ws_discrimiator_score(d, synth, orig))
+
+##############################
+###### Reidentification ######
+
+print("Reidentification probability score", reidentification_prob(synth, orig, 3, 3))
+# print("WS Discriminator score", ws_discrimiator_score(d, synth, orig))
