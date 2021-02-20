@@ -1,10 +1,10 @@
 import pandas as pd
-import numpy as np
 
 from bleu_and_reverse_bleu import bleu
 from likelihood_and_ws_likelihood import MarkovChain, liklihood, ws_likelihood
 from discriminator_and_ws_discriminator import discriminator_model, discrimiator_score, ws_discrimiator_score
 from reidentification_probability import reidentification_prob
+from proportion_of_identical_diaries import identical_diaries
 
 orig = pd.DataFrame(
     [
@@ -61,4 +61,8 @@ print("WS Discriminator score", ws_discrimiator_score(d, synth, orig))
 ###### Reidentification ######
 
 print("Reidentification probability score", reidentification_prob(synth, orig, 3, 3))
-# print("WS Discriminator score", ws_discrimiator_score(d, synth, orig))
+
+##############################
+###### Reidentification ######
+
+print("Proportion of identical diaries", identical_diaries(synth, orig))
