@@ -29,21 +29,21 @@ synth = pd.DataFrame(
     columns=[f"1_Hour{i}" for i in range(12)]
 ).astype(str)
 
-# ##############################
-# ########### BLEU #############
-#
-# print("BLEU score", bleu(synth, orig, 3, False))
-# print("Reverse BLEU score", bleu(synth, orig, 3, True))
-#
-# ##############################
-# ######## Likelihood ##########
-#
-# markov_chain_model = MarkovChain(3, orig.columns)
-# # markov_chain_model.train(orig)
-#
-# print("Likelihood score", liklihood(synth, markov_chain_model))
-# print("WS likelihood score", ws_likelihood(synth, orig, markov_chain_model))
-#
+##############################
+########### BLEU #############
+
+print("BLEU score", bleu(synth, orig, 3, False))
+print("Reverse BLEU score", bleu(synth, orig, 3, True))
+
+##############################
+######## Likelihood ##########
+
+markov_chain_model = MarkovChain(3, orig.columns)
+# markov_chain_model.train(orig)
+
+print("Likelihood score", liklihood(synth, markov_chain_model))
+print("WS likelihood score", ws_likelihood(synth, orig, markov_chain_model))
+
 ##############################
 ####### Discriminator ########
 
