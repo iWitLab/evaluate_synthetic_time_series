@@ -1,5 +1,5 @@
-# evaluating_synthetic_data
-Evaluation measures for synthetic data:
+# evaluating_synthetic_time_series
+Evaluation measures for synthetic time series data:
 
 Privay measures:
 - reidentification_probability.py
