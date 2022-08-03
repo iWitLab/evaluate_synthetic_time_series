@@ -1,5 +1,5 @@
 # evaluating_synthetic_time_series
-Evaluation measures for synthetic time series data:
+The repository contains code that evaluates measures for synthetic time series data, such as synthesis of the locations a set of people visit over a couple of weeks. The scripts compare the synthetic data to the original data and analyze how well the synthesis preserves the privacy of the original data subjects, the statistical similarity, the per-instance similarity, and the diversity of the synthetic data.
 
 Privay measures:
 - reidentification_probability.py
